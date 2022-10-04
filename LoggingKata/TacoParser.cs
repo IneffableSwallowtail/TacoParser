@@ -1,4 +1,6 @@
-﻿namespace LoggingKata
+﻿using System;
+
+namespace LoggingKata
 {
     /// <summary>
     /// Parses a POI file to locate all the Taco Bells
@@ -18,13 +20,20 @@
             if (cells.Length < 3)
             {
                 // Log that and return null
+                logger.LogInfo("Array is less than 3");
                 // Do not fail if one record parsing fails, return null
                 return null; // TODO Implement
             }
 
+            var tacoBell = new TacoBell();
+            var point = new Point();
             // grab the latitude from your array at index 0
+            point.Latitude = Convert.ToDouble(cells[0]);
             // grab the longitude from your array at index 1
+            point.Longitude = Convert.ToDouble(cells[1]);
+            tacoBell.Location = point;
             // grab the name from your array at index 2
+            tacoBell.Name = cells[2];
 
             // Your going to need to parse your string as a `double`
             // which is similar to parsing a string as an `int`
