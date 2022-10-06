@@ -9,6 +9,7 @@ namespace LoggingKata
     {
         static readonly ILog logger = new TacoLogger();
         const string csvPath = "TacoBell-US-AL.csv";
+        const double metersToMiles = 0.00062137119;
 
         static void Main(string[] args)
         {
@@ -59,11 +60,9 @@ namespace LoggingKata
                 }
             }
 
-            double miles = Math.Round(longestDistance * 0.62137119); //rants about Imperial
-            Console.WriteLine(longestDistance);
+            double miles = Math.Round(longestDistance * metersToMiles, 1); //rants about Imperial
 
-
-            Console.WriteLine(String.Format($"The two Taco Bells the farthest apart are {farthestTaco1.Name} and {farthestTaco2.Name} with a distance of {miles:n0} miles."));
+            Console.WriteLine(String.Format($"The two Taco Bells the farthest apart are {farthestTaco1.Name} and {farthestTaco2.Name} with a distance of {miles:n1} miles."));
     }
     }
 }
